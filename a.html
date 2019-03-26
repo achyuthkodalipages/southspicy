@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Add Edit Remove HTML Table Row</title>
+<meta charset="windows-1252">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+.container {
+overflow: hidden;
+margin-top: 3em;
+
+}
+
+.tab {
+float: left;
+}
+
+.tab-2 {
+margin-left: 50px
+}
+
+.tab-2 input {
+display: block;
+margin-bottom: 10px
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<div class="tab tab-1">
+<table id="table" border="1" style="display: none;">
+<tr>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Mobile</th>
+<th>State</th>
+</tr>
+
+</table>
+</div>
+<div class="tab tab-2">
+<form id="formname">
+First Name :<input type="text" name="fname" id="fname" id="hello">
+Last Name :<input type="text" name="lname" id="lname">
+Mobile Number :<input type="number" name="mobile" id="mobile">
+State :<input type="text" name="state" id="state">
+</form>
+<button onclick="tableRow();" class="btn btn-success">Add</button>
+</div>
+</div>
+
+<script>
+
+table = document.getElementById("table");
+function tableData() {
+var isEmpty = false,
+fname = document.getElementById("fname").value,
+lname = document.getElementById("lname").value,
+mobile = document.getElementById("mobile").value;
+state = document.getElementById("state").value;
+
+if (fname === "") {
+alert("First Name Connot Be Empty");
+isEmpty = true;
+}
+else if (lname === "") {
+alert("Last Name Connot Be Empty");
+isEmpty = true;
+}
+else if (mobile === "") {
+alert("Mobile no Connot Be Empty");
+isEmpty = true;
+}
+else if (state === "") {
+alert("State Connot Be Empty");
+isEmpty = true;
+}
+return isEmpty;
+}
+
+function tableRow() {
+if (!tableData()) {
+	console.log("hii");
+var newRow = table.insertRow(table.length),
+cell1 = newRow.insertCell(0),
+cell2 = newRow.insertCell(1),
+cell3 = newRow.insertCell(2),
+cell4 = newRow.insertCell(3),
+fname = document.getElementById("fname").value,
+lname = document.getElementById("lname").value,
+mobile = document.getElementById("mobile").value;
+state = document.getElementById("state").value;
+
+cell1.innerHTML = fname;
+cell2.innerHTML = lname;
+cell3.innerHTML = mobile;
+cell4.innerHTML = state;
+rowSection();
+
+}
+}
+
+function rowSection() {
+
+for (var i = 1; i < table.rows.length; i++) {
+if (table.rows.length >= 0) {
+table.style.display = "block"
+{
+table.rows[i].onclick = function () {
+document.getElementById("fname").value = this.cells[0].innerHTML;
+document.getElementById("lname").value = this.cells[1].innerHTML;
+document.getElementById("mobile").value = this.cells[2].innerHTML;
+document.getElementById("state").value = this.cells[3].innerHTML;
+};
+}
+}
+}
+document.getElementById("formname").reset();
+}
+// rowSection();
+// function tableRow() {
+// document.getElementById("formname").style();
+// }
+</script>
+
+</body>
+
+</html>
